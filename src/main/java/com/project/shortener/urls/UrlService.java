@@ -10,9 +10,10 @@ public interface UrlService {
 
     public String formatURL(String url);
     public String generateKey();
-    public Url shortenUrl(String longUrl);
+    public Url shortenUrl(Url url);
     public Url retrieveUrl(String shortenedUrl);
-    public Url deleteUrl(String shortenedUrl);
+
+
     public List<Url> getAllUrls();
 
 }

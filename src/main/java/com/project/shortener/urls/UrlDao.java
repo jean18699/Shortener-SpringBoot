@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository("shortener")
 public interface UrlDao extends MongoRepository<Url, String> {
 
-    @Query("{shortenUrl: {$eq: ?0}}")
+    @Query("{shortenedUrl: {$eq: ?0}}")
     Optional<Url> findByShortenUrl(String shortenUrl);
 
     List<Url> findAll();

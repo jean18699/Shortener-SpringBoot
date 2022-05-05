@@ -19,24 +19,17 @@ public class UrlServiceImpl implements UrlService {
 
 
     @Override
-    public Url shortenUrl(String longUrl) {
+    public Url shortenUrl(Url url) {
         String shortenedUrl = generateKey();
         //String formatedUrl = formatURL(longUrl);
-        Url url = new Url(shortenedUrl, longUrl);
-        urlDao.save(url);
+        Url newUrl = new Url(shortenedUrl, url.getLongUrl());
+        urlDao.save(newUrl);
         return url;
     }
 
     @Override
     public Url retrieveUrl(String shortenedUrl) {
         Url url = urlDao.findByShortenUrl(shortenedUrl).orElseThrow(()-> new UrlException("This Url does not exists"));
-        return url;
-    }
-
-    @Override
-    public Url deleteUrl(String shortenedUrl) {
-        Url url = urlDao.findByShortenUrl(shortenedUrl).orElseThrow(()-> new UrlException("This Url does not exists"));
-        urlDao.delete(url);
         return url;
     }
 
